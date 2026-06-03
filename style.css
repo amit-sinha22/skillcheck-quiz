@@ -1,0 +1,177 @@
+/* Modern CSS Reset & Variables */
+:root {
+    --primary-color: #4f46e5;
+    --primary-hover: #4338ca;
+    --bg-dark: #0f172a;
+    --card-bg: #1e293b;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --correct-color: #10b981;
+    --incorrect-color: #ef4444;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Container & Card Layout */
+.quiz-container {
+    background-color: var(--card-bg);
+    width: 100%;
+    max-width: 600px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    position: relative;
+}
+
+/* Smooth Progress Bar */
+.progress-container {
+    width: 100%;
+    height: 6px;
+    background-color: #334155;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #818cf8, var(--primary-color));
+    transition: width 0.4s ease;
+}
+
+.screen {
+    display: none;
+    padding: 40px;
+}
+
+.screen.active {
+    display: block;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Typography & Headings */
+h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+h3 {
+    font-size: 1.3rem;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+.quiz-header {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+/* Options Grid Layout */
+.options-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.option-btn {
+    background-color: #334155;
+    color: var(--text-main);
+    border: 2px solid transparent;
+    padding: 15px 20px;
+    border-radius: 8px;
+    text-align: left;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.option-btn:hover:not(:disabled) {
+    background-color: #475569;
+    border-color: #64748b;
+}
+
+/* State Styling for Answer Verification */
+.option-btn.correct {
+    background-color: rgba(16, 185, 129, 0.2);
+    border-color: var(--correct-color);
+    color: #34d399;
+}
+
+.option-btn.incorrect {
+    background-color: rgba(239, 68, 68, 0.2);
+    border-color: var(--incorrect-color);
+    color: #f87171;
+}
+
+/* Action Buttons */
+.btn {
+    display: block;
+    width: 100%;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 15px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.btn:hover:not(:disabled) {
+    background-color: var(--primary-hover);
+}
+
+.btn:disabled {
+    background-color: #475569;
+    color: var(--text-muted);
+    cursor: not-allowed;
+}
+
+/* Results Display */
+.score-badge {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin: 20px 0;
+}
+
+#feedback-text {
+    text-align: center;
+    color: var(--text-muted);
+    margin-bottom: 30px;
+}
+
+/* CSS Keyframes for smooth transitions */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive Breakpoints via Media Queries */
+@media (max-width: 480px) {
+    body { padding: 10px; }
+    .screen { padding: 25px 20px; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.15rem; }
+    .option-btn { padding: 12px 16px; font-size: 0.95rem; }
+}
